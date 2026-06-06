@@ -40,7 +40,7 @@
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.65;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
@@ -129,6 +129,19 @@
             top: -2px;
         }
 
+        .info-box {
+            background-color: var(--bg-color);
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .info-box p {
+            margin-bottom: 0;
+            font-size: 14.5px;
+        }
+
         footer {
             text-align: center;
             margin-top: 48px;
@@ -155,52 +168,74 @@
     <header>
         <img class="logo" src="app_icon.png" alt="INONE 2FA Logo">
         <h1>INONE 2FA</h1>
-        <div class="subtitle">Privacy Policy • Last updated: June 06, 2026</div>
+        <div class="subtitle">Detailed Privacy Policy & User Guide • Last updated: June 06, 2026</div>
     </header>
 
     <main>
         <section>
-            <p>INONE 2FA is built as a free, secure, and open-source Two-Factor Authentication (2FA) application. This service is provided at no cost and is designed to be used as is.</p>
-            <p>Your privacy is of utmost importance to us. This policy describes how we handle information in the INONE 2FA mobile application.</p>
+            <h2>About INONE 2FA</h2>
+            <p><strong>INONE 2FA</strong> is a modern, offline-first, secure, and open-source Two-Factor Authentication (2FA) application. It is designed to act as a reliable shield for your online accounts, generating time-based one-time passwords (TOTP) and counter-based one-time passwords (HOTP) to defend against unauthorized access.</p>
+            <p>Your privacy is absolute. This application operates entirely on-device, prioritizing security without compromise.</p>
         </section>
 
         <section>
-            <h2>1. Information Collection and Use</h2>
-            <p>INONE 2FA is fully offline-first. <strong>We do not collect, store, upload, or transmit</strong> any of your personal data, credentials, account tokens, secret keys, or authentication records. All database vaults are encrypted using strong encryption standards and remain exclusively on your local device storage.</p>
+            <h2>1. Information Collection and Storage</h2>
+            <p>Our app does not require a user account or any form of registration. <strong>No personal data is collected or transmitted</strong>. Everything you generate is stored locally in an encrypted database on your device.</p>
+            <div class="info-box">
+                <p><strong>Zero Cloud Connection:</strong> The application does not upload your secret keys or backups to any external servers. Your vault security depends entirely on the physical safety of your device and the strength of the vault password you select during initial setup.</p>
+            </div>
         </section>
 
         <section>
-            <h2>2. Device Permissions Required</h2>
-            <p>To provide core security features, the app requests the following device permissions:</p>
+            <h2>2. Encryption Standards</h2>
+            <p>The local database containing your secret keys is encrypted using the <strong>Advanced Encryption Standard (AES)</strong>. This ensures that even if someone extracts the raw database files from your device, they cannot decrypt the content without knowing your master password.</p>
+        </section>
+
+        <section>
+            <h2>3. Device Permissions and How They Are Used</h2>
+            <p>INONE 2FA requests access to specific device capabilities to perform its core functions. Here is exactly why these permissions are needed:</p>
             <ul>
-                <li><strong>Camera Permission:</strong> Used solely to scan QR codes for adding new two-factor authentication accounts to the application. Camera inputs are processed in-memory locally on the device and never sent to any remote servers.</li>
-                <li><strong>Biometric (Fingerprint/Face) Authentication:</strong> Used only to secure the application entry and unlock the vault locally. Biometric data is managed by the Android operating system secure enclave, and the app never accesses or stores your biometric template.</li>
+                <li><strong>Camera:</strong> Required to scan QR codes during account setup. This allows the application to read the authentication secret key encoded in the barcode instantly. Visual streams are processed in-memory and never saved or shared.</li>
+                <li><strong>Biometric Credentials:</strong> Required if you decide to unlock the application with your fingerprint or face instead of typing your password. Authentication is completed securely via the Android BiometricPrompt API; the app does not store or see your biometric descriptors.</li>
             </ul>
         </section>
 
         <section>
-            <h2>3. Third-Party Services</h2>
-            <p>The application does not use any third-party software development kits (SDKs), advertising networks, analytics platforms, or background tracking systems. No analytics data, crash reports, or device identifiers are shared with third parties.</p>
+            <h2>4. User Guide: How to Use INONE 2FA</h2>
+            <p>Setting up and using INONE 2FA is straightforward. Follow these steps to secure your online presence:</p>
+            
+            <p><strong>Step 1: Welcome & Setup</strong><br>
+            When you first open INONE 2FA, you will see the welcome screens. Set up a secure lock screen password or enable biometrics to lock your app's vault.</p>
+            
+            <p><strong>Step 2: Adding an Account</strong><br>
+            To add a service (e.g., Google, GitHub, Discord) to INONE 2FA:<br>
+            - Open the security settings of the respective service and select "Enable 2FA".<br>
+            - Scan the QR code shown on their screen using the INONE 2FA camera scanner.<br>
+            - Alternatively, copy their manual secret key and paste it directly into the manual entry form in the app.</p>
+
+            <p><strong>Step 3: Verification</strong><br>
+            Once added, a 6-digit verification code will start generating on your screen. The code updates automatically every 30 seconds. Enter this code on the website to finish binding your account.</p>
+
+            <p><strong>Step 4: Backing Up Your Accounts</strong><br>
+            Since the app is fully offline, if you lose your phone, you lose access to your codes. We highly recommend creating regular encrypted backups:<br>
+            - Go to App Settings > Export.<br>
+            - Create an encrypted backup file, choose a secure password, and store this backup file safely on a secure physical drive or private storage.</p>
         </section>
 
         <section>
-            <h2>4. Security</h2>
-            <p>We value your trust in using our app for securing your credentials, thus we use commercially acceptable security practices to protect your data locally. However, please remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.</p>
+            <h2>5. Third-Party Libraries and Open Source</h2>
+            <p>This application is open-source. It does not integrate with any analytics libraries, proprietary advertising kits, or trackers. There are no cookies, beacons, or background reporting threads running inside the app.</p>
         </section>
 
         <section>
-            <h2>5. Changes to This Privacy Policy</h2>
-            <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
-        </section>
-
-        <section>
-            <h2>6. Contact Us</h2>
-            <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <a href="mailto:aryankushwaha2354@gmail.com" style="color: var(--primary); text-decoration: none;">aryankushwaha2354@gmail.com</a>.</p>
+            <h2>6. Support & Contact</h2>
+            <p>If you experience any issues, need assistance, or have questions about the privacy of your data, you can reach out directly to our support channel on Telegram:</p>
+            <p><strong>Telegram Support:</strong> <a href="https://t.me/Inonesupport" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: none;">t.me/Inonesupport</a></p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 INONE 2FA. All rights reserved.</p>
+        <p>&copy; 2026 INONE 2FA. Developed and maintained securely.</p>
     </footer>
 </div>
 
